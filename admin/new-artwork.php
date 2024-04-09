@@ -30,7 +30,7 @@ require_once '../data/query_new_material.php';
 <div class="flex items-center ms-80 mb-16">
 <?php 
             foreach ($galerie1 as $material){ ?>
-    <input checked id="checkbox" name="material_name" type="checkbox" value="" class="w-4 h-4 pe-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <input checked id="checkbox" name="material_name[]" type="checkbox" value="<?php echo $material['material_name'] ?>" class="w-4 h-4 pe-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
     <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 pe-6"><?php echo $material['material_name'] ?></label>
     <?php }
     ?>
