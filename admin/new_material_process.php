@@ -1,26 +1,21 @@
 <?php
-require_once '../classes/Artwork.php';
+require_once '../classes/Material.php';
 require_once __DIR__ . '/../functions/db.php';
 
 
-$newArtwork = new Artwork($_POST);
 
-$db = getConnection();
+$pdo = getConnection();
+$newMaterial = new Material($pdo);
 
-$insertMaterial = 'INSERT INTO material(material_name)
-VALUES (:material_name)';
 
-$newMaterial = $_POST['material_name'];
-
-$materialStmt = $db->prepare($insertMaterial);
-$materialStmt->execute(
+$newMaterial->insert(
     [
-        'material_name'=>$newMaterial
+        'material_name'=>$_POST['material_name']
     ]
     );
 
 if (!$materialStmt) {
-    header('Location: new_material.php');
+    header('Location: new-material.php');
     exit;
 }
 header('Location: new-material.php');

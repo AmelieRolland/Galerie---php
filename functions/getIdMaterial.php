@@ -1,15 +1,19 @@
 <?php
 require_once __DIR__ . '/db.php';
 
-
+function getIdMaterial(){
+    
 $db = getConnection();
 
-$sqlQuery = "SELECT material_name, material.id
+$sqlQuery = "SELECT material.id
 FROM material
-INNER JOIN artwork_material ON artwork_material.id_material = material.id
-INNER JOIN artwork ON artwork_material.id_artwork = artwork.id
 WHERE  'material_name = :material_name";
 
 
-$artworkStatement = $db->query($sqlQuery);
-$galerie1 = $artworkStatement->fetchAll();
+$stmt = $db->query($sqlQuery);
+$materialId = $stmt->fetch();
+
+return $materialId;
+
+
+}
