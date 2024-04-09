@@ -1,0 +1,17 @@
+.backgroundimg{
+    background-image: url(../img/background.jpg);
+}
+
+.pink{
+    background-color: rgb(254 202 202);
+}
+.dark-pink{
+    background-color: rgb(231, 152, 152);
+}
+.darker-pink{
+    background-color: #894545;
+}
+.gd-titre{
+    font-size: 40px;
+    font-weight: 900;
+}
