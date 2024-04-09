@@ -18,10 +18,8 @@ $newArtwork->insert($_POST);
 //je récupère son id dans sa table pour pouvoir l'enregistrer aussi dans la table de jointure:
 $lastArtworkId = getLastId();
 
-//je récupère l'id du/des matériaux sélectionnés :
-
-// $materials = $_POST['material_name'];
-
+//je récupere les matériaux sélectionnés dans le formulaire, pour les enregistrer chacun associé à l'id de l'oeuvre
+//dans la table de jointure:
 
 foreach ($_POST['material_name'] as $material){
 
