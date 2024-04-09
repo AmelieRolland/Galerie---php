@@ -8,11 +8,7 @@ $pdo = getConnection();
 $newMaterial = new Material($pdo);
 
 
-$newMaterial->insert(
-    [
-        'material_name'=>$_POST['material_name']
-    ]
-    );
+$newMaterial->insert($_POST);
 
 if (!$materialStmt) {
     header('Location: new-material.php');

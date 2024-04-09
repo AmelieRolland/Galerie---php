@@ -1,16 +1,17 @@
 <?php
 require_once __DIR__ . '/../functions/utils.php';
-require_once __DIR__ . '/../functions/db.php';
+require_once __DIR__ . '/NewElmt.php';
 
 
-class Artwork {
+class Artwork extends NewElmt 
+{
 
     private const REQUIRED_FIELDS = ['name', 'year', 'height_cm', 'width_cm', 'description', 'img_url'];
     private array $artworkFields;
 
-    public function __construct($artworkFields)
+    public function __construct($pdo)
     {
-        $this->artworkFields = $artworkFields;
+        parent:: __construct($pdo, 'artwork');
     }
 
 
@@ -24,6 +25,26 @@ class Artwork {
 
         redirect('new-artwork.php');
         
+    }
+
+    public function insert($post)
+    {
+        $insertArtwork = " INSERT INTO " . $this->tableName . "(name, year, height_cm, width_cm, description, img_url)
+        VALUES (:name, :year, :height_cm, :width_cm, :description, :img_url)";
+
+        $artworkStmt = $this->pdo->prepare($insertArtwork);
+
+        $artworkStmt->execute(
+            [
+                'name'=>$post['name'],
+                'year'=>$post['year'],
+                'height_cm'=>$post['height_cm'],
+                'width_cm'=>$post['width_cm'],
+                'description'=>$post['description'],
+                'img_url'=>$post['img_url']
+            
+            ]
+            );
     }
 
 

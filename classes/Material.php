@@ -37,7 +37,7 @@ class Material extends NewElmt {
             [
                 'material_name' => $post['material_name']
             ]
-            );
+        );
     }
 
     
