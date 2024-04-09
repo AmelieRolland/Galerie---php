@@ -15,8 +15,8 @@ $fullEmail = getEmail($id);
 
 <p><b>De la part de :</b> <?php echo $fullEmail['firstname'] ." " . $fullEmail['lastname'] ?></p>
 <p>Adresse email : <?php echo $fullEmail['email'] ?></p>
-<p>Objet du message :<?php echo $fullEmail['subject'] ?></p>
+<p>Objet du message : <?php echo $fullEmail['subject'] ?></p>
 <p>Message : <?php echo $fullEmail['message'] ?></p>
-<p>Date d'envoie :<?php echo $fullEmail['date'] ?></p>
+<p>Date d'envoi : <?php echo $fullEmail['date'] ?></p>
 
 </div>
