@@ -1,18 +1,22 @@
 <?php
 require_once __DIR__ . '/../functions/utils.php';
-require_once __DIR__ . '/NewElmt.php';
 
 
-class Artwork extends NewElmt 
+class Artwork 
 {
+    const UPLOAD_DIR = "__DIR__ . '/../assets/img/galerie/'";
 
     private const REQUIRED_FIELDS = ['name', 'year', 'height_cm', 'width_cm', 'description', 'img_url'];
     private array $artworkFields;
 
-    public function __construct($pdo)
-    {
-        parent:: __construct($pdo, 'artwork');
-    }
+
+        public function __construct(
+            private PDO $pdo,
+            private string $tableName,
+            private array $file )
+            {
+        }
+    
 
 
     private function hasRequiredFields()
@@ -27,8 +31,26 @@ class Artwork extends NewElmt
         
     }
 
+    //ecrire fonction findFile($file) pour récupérer le 'name' de $_FILES
+    //return $fileName
+    //et dans la fonction insert ajouter this->filename
+    private function findFile()
+    {
+        $img_url = $this->file['img_url'];
+
+        $uploadedImgInfo = pathinfo($img_url['name']);
+        $uploadedImgName = $uploadedImgInfo['filename'];
+        $uploadedImgExt = $uploadedImgInfo['extension'];
+        $randomStr = randomStr(5);
+        return $uploadedImgName . $randomStr . "." . $uploadedImgExt;
+        
+    }
+
+
     public function insert($post)
     {
+        $imgFile = Artwork::findFile($this->file);
+
         $insertArtwork = " INSERT INTO " . $this->tableName . "(name, year, height_cm, width_cm, description, img_url)
         VALUES (:name, :year, :height_cm, :width_cm, :description, :img_url)";
 
@@ -41,11 +63,25 @@ class Artwork extends NewElmt
                 'height_cm'=>$post['height_cm'],
                 'width_cm'=>$post['width_cm'],
                 'description'=>$post['description'],
-                'img_url'=>$post['img_url']
-            
+                'img_url' => $imgFile
             ]
             );
+            $destinationPath = __DIR__ . '/../assets/img/galerie/' . $imgFile;
+            if (!move_uploaded_file($this->file['img_url']['tmp_name'], $destinationPath)) {
+            throw new Exception('Failed to move uploaded file.');
+}
+
     }
+
+    // public function uploadFile($destination)
+    // {
+    //     $imgFile = Artwork::findFile($this->file);
+
+    //     return self::UPLOAD_DIR . '/' . $imgFile;
+        
+
+    // }
+
 
 
     

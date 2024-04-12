@@ -8,20 +8,23 @@ require_once '../data/query_new_material.php';
 
 <h1 class="ms-80 font-black text-5xl mt-40 mb-20">ENREGISTRER UNE NOUVELLE OEUVRE</h1>
 
-<form method="post" action="new_artwork_process.php">
+<form method="post" enctype="multipart/form-data" action="new_artwork_process.php">
 
 <div class="mb-6 ms-80">
     <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Nom de l'oeuvre</label>
     <input type="text" name="name" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 </div>
 
-<!-- <label class="block mb-2 text-sm font-medium text-white-900 dark:text-white" for="file_input">Upload file</label>
-<input name="url_img" class="block ms-80 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file">
-<p class="mt-1 text-sm text-gray-500" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p> -->
-<div class="mb-6 ms-80">
+<label class="block mb-2 text-sm font-medium text-white-900 dark:text-white" for="file_input">Upload file</label>
+<input type="file" name="img_url" class="block ms-80 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file">
+<p class="mt-1 text-sm text-gray-500" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+
+
+
+<!-- <div class="mb-6 ms-80">
     <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Nom de l'oeuvre</label>
     <input type="text" name="img_url" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-</div>
+</div> -->
 
 <label for="countries" class="block ms-80 mb-2 text-sm font-medium text-gray-900">Techniques</label>
 
