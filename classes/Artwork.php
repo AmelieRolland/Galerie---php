@@ -5,15 +5,14 @@ require_once __DIR__ . '/../functions/utils.php';
 class Artwork 
 {
     const UPLOAD_DIR = "__DIR__ . '/../assets/img/galerie/'";
-
     private const REQUIRED_FIELDS = ['name', 'year', 'height_cm', 'width_cm', 'description', 'img_url'];
     private array $artworkFields;
 
 
         public function __construct(
             private PDO $pdo,
-            private string $tableName,
-            private array $file )
+            private string $tableName, 
+            private ?array $file = [])
             {
         }
     
@@ -73,14 +72,25 @@ class Artwork
 
     }
 
-    // public function uploadFile($destination)
-    // {
-    //     $imgFile = Artwork::findFile($this->file);
+    public function edit($post)
+    {
+        $editArtwork = "UPDATE $this->tableName SET name=:name, year=:year, height_cm=:height_cm,
+        width_cm=:width_cm, description=:description WHERE id=:id";
 
-    //     return self::UPLOAD_DIR . '/' . $imgFile;
-        
+        $editStmt = $this->pdo->prepare($editArtwork);
 
-    // }
+        $editStmt->execute(
+            [
+                'id' =>$post['id'],
+                'name'=>$post['name'],
+                'year'=>$post['year'],
+                'height_cm'=>$post['height_cm'],
+                'width_cm'=>$post['width_cm'],
+                'description'=>$post['description']
+            ]
+            );
+    }
+
 
 
 

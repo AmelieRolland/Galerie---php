@@ -13,7 +13,7 @@ $pdo = getConnection();
 //insertion des données de la nouvelle oeuvre:
 $newArtwork = new Artwork($pdo, 'artwork', $_FILES);
 
-$newArtwork->insert($_POST, $_FILES);
+$newArtwork->insert($_POST);
 
 //je récupère son id dans sa table pour pouvoir l'enregistrer aussi dans la table de jointure:
 $lastArtworkId = getLastId();
