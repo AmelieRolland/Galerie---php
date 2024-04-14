@@ -1,8 +1,9 @@
 <?php
 require_once 'functions/db.php';
+require_once 'functions/utils.php';
 
 if (empty($_POST)) {
-    header('Location: index.php');
+    redirect('index.php');
     exit;
 }
 

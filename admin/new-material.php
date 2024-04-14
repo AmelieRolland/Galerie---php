@@ -22,3 +22,5 @@ require_once __DIR__ . '/../layout/side-bar.php';
 
 
 <div><input class="ms-80 block mb-2 text-sm font-medium text-gray-900" type="submit" value="Envoyer" />Envoyer</div>
+
+<?php require_once __DIR__ . '/../layout/footer.php';  ?>

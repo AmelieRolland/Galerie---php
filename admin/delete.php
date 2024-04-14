@@ -16,3 +16,5 @@ $artworkFile = getArtwork($id);
 
 <a href="delete_process.php?id=<?php echo $artworkFile['id'] ?>" class="ms-80 font-medium px-10 py-3 bg-red-500 text-blue-600 dark:text-white">OUI</a>
 
+
+<?php require_once __DIR__ . '/../layout/footer.php';  ?>

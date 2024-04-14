@@ -6,7 +6,7 @@ abstract class NewElmt
     public function __construct(
         protected PDO $pdo,
         protected string $tableName
-         )
+    )
         {
     }
 

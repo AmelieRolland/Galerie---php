@@ -20,3 +20,6 @@ $fullEmail = getEmail($id);
 <p>Date d'envoi : <?php echo $fullEmail['date'] ?></p>
 
 </div>
+
+<?php require_once __DIR__ . '/../layout/footer.php';  ?>
+

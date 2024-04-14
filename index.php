@@ -140,5 +140,4 @@ $title = 'Amelie Rolland';
       </form>
   </div>
 </section>
-</body>
-</html>
+<?php require_once 'layout/footer.php';  ?>

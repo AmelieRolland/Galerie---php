@@ -52,3 +52,5 @@ require_once 'layout/navbar.php';
     </div>
 
 </div>
+
+<?php require_once 'layout/footer.php';  ?>

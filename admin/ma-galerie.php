@@ -45,3 +45,5 @@ require_once __DIR__ . '/../data/bdd.php';
     </table>
 </div>
 <?php } ?>
+
+<?php require_once __DIR__ . '/../layout/footer.php';  ?>
