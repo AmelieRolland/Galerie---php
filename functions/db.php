@@ -9,7 +9,7 @@ function getConnection(): PDO
         'DB_CHARSET'  => $charset,
         'DB_USER'     => $dbUser,
         'DB_PASSWORD' => $dbPassword
-    ] = parse_ini_file(__DIR__ . '/../configuration/db.ini');
+    ] = parse_ini_file(__DIR__ . '/../config/db.ini');
 
     $dsn = "mysql:host=$host;port=$port;dbname=$dbName;charset=$charset";
 
