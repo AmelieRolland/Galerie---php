@@ -18,7 +18,6 @@ $loginPassword = $_POST['password'];
 
 //verifications, early pattern
 if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-    // throw new InvalidEmail();
     $invalid = new InvalidEmail();
     $_SESSION['error_message'] = $invalid->getErrorMessage();
     redirect('sign-in.php');

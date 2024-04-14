@@ -38,8 +38,19 @@ Les fonctions que j'ai créé servent essentiellement à **récupérer** des cho
 ## CLASSES
 
 J'ai commencé à créer des classes qui avaient des méthodes de constructions et d'insertion. Puis naturellement, j'ai réalisé que toutes ces classes que je planifiais d'avoir avaient une utilisation et un pattern similaire : la construction et l'insertion.
+
 J'ai donc créé une abstract class [NewElmt](classes/NewElmt.php) puis ses enfants.
-J'ai du retiré Artwork au dernier moment et l'isoler, car je rencontrai des difficulté à l'associer avec ses paramètres supplémentaires ($file). J'ai essayé de mettre le $file en null dans le constructeur, en plus de null dans le constructeur artwork, mais je rencontrai des problèmes avec le $this->file. Je n'ai pas eu le temps de résoudre ça, et j'ai préféré rendre ce stravail fonctionnel.
+J'ai dû retirer Artwork au dernier moment et l'isoler, car je rencontrai des difficulté à l'associer avec ses paramètres supplémentaires ($file). J'ai essayé de mettre le $file en null dans le constructeur parent, en plus de null dans le constructeur artwork, mais je rencontrai des problèmes avec le $this->file. Je n'ai pas eu le temps de résoudre ça, et j'ai préféré rendre ce travail fonctionnel.
 
+J'ai utilisé une abstract class également pour les erreurs. Je n'ai pas eu le temps de traiter tous les messages d'erreur, car j'ai mis un peu de temps à comprendre et prendre en main cette méthode qui me semblait très interessante. Il a quand même fallu que je la teste, alors j'ai créé [ErrorResponse](classes/ErrorResponses/ErrorResponse.php) qui est la classe parente, et [InvalidEmail](classes/ErrorResponses/InvalidEmail.php) et [RequiredFields](classes/ErrorResponses/RequiredFields.php) qui sont des classes enfants. L'idée est ensuite de gérer mes message d'erreur avec ces ces classes. J'ai utilisé la $_SESSION pour enregistrer et détecter un message d'erreur :
 
+```php
+if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    $invalid = new InvalidEmail();
+    $_SESSION['error_message'] = $invalid->getErrorMessage();
+    redirect('sign-in.php');
+}
+```
+
+J'aurai pu écrire un message directement au lieu d'instancier une classe et d'appeler sa méthode. Cependant, je trouve que c'est plus commode sur le long terme, pour pouvoir réutiliser ce message sans fautes ou erreurs, et si jamais il devait être modifié, je le retrouverai à un seul endroit.
 
