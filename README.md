@@ -29,3 +29,9 @@ Contient 5 tables :
 * Possibilité de supprimer une oeuvre.
 * Possibilité d'éditer quelques champs d'une oeuvre (manquent l'upload, et le choix des techniques, par manque de temps)
 
+## FUNCTIONS
+
+Les fonctions que j'ai créé servent essentiellement à **récupérer** des choses précises dans ma base de données. Ayant une relation many to many dans ma bdd, mes requêtes pouvaient vite être encombrantes. 
+
+> Par exemple, si l'admin rempli le formulaire pour ajouter une oeuvre à sa galerie, il fallait dans ma page rebond que je récupère le dernier id inséré instantanément dans la table artwork, ainsi que les id correspondant aux matériaux sélectionnés, pour les injecter ensuite dans ma table de jointure, afin que le tout puisse s'afficher correctement dans la page galerie.
+
