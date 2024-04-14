@@ -31,12 +31,6 @@ $artworkFile = getArtwork($id);
 </div> -->
 <input type="hidden" name="id" value="<?php echo $id?>">
 
-
-
-
-
-
-
 <div class="flex">
     <div class="mb-6 ms-80">
         <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 ">Hauteur (en cm)</label>

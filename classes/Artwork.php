@@ -30,9 +30,6 @@ class Artwork
         
     }
 
-    //ecrire fonction findFile($file) pour récupérer le 'name' de $_FILES
-    //return $fileName
-    //et dans la fonction insert ajouter this->filename
     private function findFile()
     {
         $img_url = $this->file['img_url'];
@@ -90,6 +87,32 @@ class Artwork
             ]
             );
     }
+
+    public function delete($id)
+    {
+        //d'abord supprimer l'oeuvre dans la table artwork_material, car elle contient systematiquement
+        //une clé étrangère de l'artwork qu'on voudra supprimer :
+
+        $deleteMaterialArtwork = "DELETE FROM artwork_material WHERE id_artwork = :id";
+        $deleteMatArtStmt = $this->pdo->prepare($deleteMaterialArtwork);
+        $deleteMatArtStmt->execute(['id' => $id]);
+
+        //Ensuite je peux appliquer la requete de suppression de l'artwork :
+
+        $deleteArtwork = "DELETE FROM $this->tableName WHERE id = :id";
+        $deleteStmt = $this->pdo->prepare($deleteArtwork);
+        $deleteStmt->execute(['id' => $id]);
+
+        //gerer le cas d'erreur mais inverser pour le early pattern
+        if ($deleteMatArtStmt->rowCount() > 0 && $deleteStmt->rowCount() > 0) {
+      
+            echo "L'oeuvre et les liens de matériaux associés ont été supprimés avec succès.";
+        } else {
+            echo "Erreur lors de la suppression de l'oeuvre et des liens de matériaux associés.";
+        }
+
+    }
+
 
 
 

@@ -15,6 +15,9 @@ require_once __DIR__ . '/NewElmt.php';
     
     public function insert($post)
     {
+
+        $hashedPassword = password_hash($post['password'], PASSWORD_BCRYPT);
+
         $insertUser = " INSERT INTO " . $this->tableName . "(surname, firstname, email, password)
         VALUES (:surname, :firstname, :email, :password)";
 
@@ -25,7 +28,7 @@ require_once __DIR__ . '/NewElmt.php';
                 'surname'=>$post['surname'],
                 'firstname'=>$post['firstname'],
                 'email'=>$post['email'],
-                'password'=>$post['password']
+                'password'=>$hashedPassword
             
             ]
             );

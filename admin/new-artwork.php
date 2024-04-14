@@ -1,7 +1,6 @@
 <?php
-
 require_once __DIR__ . '/../layout/side-bar.php';
-require_once '../data/query_new_material.php';
+require_once __DIR__ .  '/../data/query_new_material.php';
 
 
 ?>
@@ -21,12 +20,7 @@ require_once '../data/query_new_material.php';
 
 
 
-<!-- <div class="mb-6 ms-80">
-    <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Nom de l'oeuvre</label>
-    <input type="text" name="img_url" id="default-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-</div> -->
-
-<label for="countries" class="block ms-80 mb-2 text-sm font-medium text-gray-900">Techniques</label>
+<label for="materials" class="block ms-80 mb-2 text-sm font-medium text-gray-900">Techniques</label>
 
 
 
@@ -34,7 +28,7 @@ require_once '../data/query_new_material.php';
 <?php 
             foreach ($galerie1 as $material){ ?>
     <input checked id="checkbox" name="material_name[]" type="checkbox" value="<?php echo $material['material_name'] ?>" class="w-4 h-4 pe-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-    <label for="checked-checkbox" class="ms-2 text-sm font-medium text-gray-900 pe-6"><?php echo $material['material_name'] ?></label>
+    <label for="checkbox" class="ms-2 text-sm font-medium text-gray-900 pe-6"><?php echo $material['material_name'] ?></label>
     <?php }
     ?>
 </div>

@@ -6,6 +6,10 @@ if (empty($_POST)) {
     exit;
 }
 
+//eviter toute injection de code malveillant dans la messagerie
+$_POST['message'] = htmlspecialchars(strip_tags($_POST['message']));
+
+
 //créer une fonction pour vérifier validité des données
 
 try {

@@ -1,4 +1,5 @@
 <?php
+
 require_once 'layout/header.php';
 require_once 'data/bdd.php';
 require_once 'functions/getArtwork.php';
@@ -9,20 +10,23 @@ $id=$_GET['id'];
 $artworkFile = getArtwork($id);
 $materials=getMaterials($id);
 
+$title= "fiche";
+require_once __DIR__ . '/layout/header.php';
+
 
 ?>
 <body>
 <?php 
 require_once 'layout/navbar.php';
 ?>
-
 <div class="container mx-auto">
     
+<a href="galerie-portrait.php" class="pt-12 text-1xl">Retourner à la galerie</a>
 
     <div class="columns-2 flex flex-row h-full mt-40">
 
-        <div class="flex flex-col justify-end">
-            <img src="assets/img/galerie/<?php echo $artworkFile['img_url'] ?>" alt="">
+        <div class="w-2/4 h-auto flex flex-col justify-end">
+            <img class="w-full h-auto" src="assets/img/galerie/<?php echo $artworkFile['img_url'] ?>" alt="">
         </div>
 
         <div class="flex flex-col justify-items-center ms-32 h-100">
