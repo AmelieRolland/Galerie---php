@@ -53,10 +53,10 @@ Les fonctions que j'ai créé servent essentiellement à **récupérer** des cho
 J'ai commencé à créer des classes qui avaient des méthodes de constructions et d'insertion. Puis naturellement, j'ai réalisé que toutes ces classes que je planifiais d'avoir avaient une utilisation et un pattern similaire : la construction et l'insertion.
 
 J'ai donc créé une abstract class [NewElmt](classes/NewElmt.php) puis ses enfants.
-J'ai dû retirer Artwork au dernier moment et l'isoler, car je rencontrai des difficulté à l'associer avec ses arguments supplémentaires ($file). J'ai essayé de mettre le $file en null dans le constructeur parent, en plus de null dans le constructeur artwork (car il doit être null dans la class Artwork), mais je rencontrai des problèmes avec le $this->file. Je n'ai pas eu le temps de résoudre ça, et j'ai préféré rendre ce travail fonctionnel.
+J'ai dû retirer Artwork au dernier moment et l'isoler, car je rencontrai des difficulté à l'associer avec ses arguments complémentaires ($file). J'ai essayé de mettre le $file en null dans le constructeur parent, en plus de null dans le constructeur artwork (car il doit être null dans la class Artwork), mais je rencontrai des problèmes avec le $this->file. Je n'ai pas eu le temps de résoudre ça, et j'ai préféré rendre ce travail fonctionnel.
 
 
-Je crois que ça me serait très utile aussi si je décide de créer une page e-commerce.
+Je crois que ça me sera très utile aussi si je décide de créer une page e-commerce.
 
 
 J'ai utilisé une abstract class également pour les erreurs. Je n'ai pas eu le temps de traiter tous les messages d'erreur, car j'ai mis un peu de temps à comprendre et prendre en main cette méthode qui me semblait très interessante. Il a quand même fallu que je la teste, alors j'ai créé [ErrorResponse](classes/ErrorResponses/ErrorResponse.php) qui est la classe parente, et [InvalidEmail](classes/ErrorResponses/InvalidEmail.php) et [RequiredFields](classes/ErrorResponses/RequiredFields.php) qui sont des classes enfants. L'idée est ensuite de gérer mes message d'erreur avec de nouvelles classes enfant. J'ai utilisé la $_SESSION pour enregistrer et détecter un message d'erreur -- [dans le sign-in_process, ici](admin/sign-in_process.php) :
@@ -69,7 +69,7 @@ if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 }
 ```
 > [!NOTE]
-> J'aurai pu écrire un message directement au lieu d'instancier une classe et d'appeler sa méthode. Cependant, je trouve que c'est plus approprié sur le long terme, pour pouvoir réutiliser ce message sans fautes ou erreurs, et si jamais il devait être modifié, je le retrouverai à un seul endroit.
+> J'aurai pu écrire un message directement au lieu d'instancier une classe et d'appeler sa méthode. Cependant, je trouve que c'est plus approprié sur le long terme, pour pouvoir réutiliser ce message sans fautes ou erreurs de frappe, et si jamais il devait être modifié, je le retrouverai à un seul endroit.
 
 ## Dossier DATA
 
