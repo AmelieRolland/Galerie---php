@@ -1,3 +1,4 @@
+<?php  session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,22 @@
 </head>
 <body>
 
+
 <h1 class="max-w-sm mx-auto font-black text-5xl mt-40 mb-12">Bonjour !</h1>
 
+<!-- check l'affichage d'erreur -->
+
+<?php if (isset($_SESSION['error_message'])) {  ?>
+
+  <div class="bg-red-500 text-white w-full py-6 px-4">
+    Erreur : <?php echo $_SESSION['error_message']; 
+    session_unset();
+    ?>
+
+
+
+</div>
+<?php } ?>
 <form method="post" class="max-w-sm mx-auto" action="sign-in_process.php">
   <div class="mb-5">
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>

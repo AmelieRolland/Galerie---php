@@ -1,7 +1,9 @@
 <?php
-
+session_start();
 require_once __DIR__ . '/../functions/db.php';
 require_once __DIR__ . '/../functions/utils.php';
+require_once __DIR__ . '/../classes/ErrorResponses/InvalidEmail.php';
+require_once __DIR__ . '/../classes/ErrorResponses/RequiredFields.php';
 
 
 
@@ -11,20 +13,30 @@ try {
 } catch(PDOException $e) {
     redirect('sign-in.php');
 }
-
+$email = $_POST['email'];
+$loginPassword = $_POST['password'];
 
 //verifications, early pattern
-
+if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    // throw new InvalidEmail();
+    $invalid = new InvalidEmail();
+    $_SESSION['error_message'] = $invalid->getErrorMessage();
+    redirect('sign-in.php');
+}
+  
 if (empty($_POST)) {
+    $requiredError = new RequiredFields();
+    $_SESSION['error_message'] = $requiredError->getErrorMessage();
     redirect('sign-in.php');
 }
 
 
-$email = $_POST['email'];
-$loginPassword = $_POST['password'];
+
 
 
 if (empty($email) || empty($loginPassword) == true) {
+    $requiredError = new RequiredFields();
+    $_SESSION['error_message'] = $requiredError->getErrorMessage();
     redirect('sign-in.php');
 }
 
@@ -57,3 +69,4 @@ $_SESSION['user'] = [
 ];
 
 redirect('ma-galerie.php');
+

@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 require_once __DIR__ . '/../layout/side-bar.php';
 require_once __DIR__ . '/../data/bdd.php';
 

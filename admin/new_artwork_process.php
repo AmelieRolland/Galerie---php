@@ -8,7 +8,11 @@ require_once __DIR__ . '/../functions/getIdMaterial.php';
 
 
 
-$pdo = getConnection();
+try {
+    $pdo = getConnection();
+} catch (PDOException $e) {
+    redirect('contact.php');
+}
 
 //insertion des données de la nouvelle oeuvre:
 $newArtwork = new Artwork($pdo, 'artwork', $_FILES);

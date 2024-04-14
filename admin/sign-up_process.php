@@ -4,12 +4,20 @@ require_once __DIR__ . '/../functions/db.php';
 
 
 
-$pdo = getConnection();
-$newUser = new User($pdo);
+try {
+    $pdo = getConnection();
+} catch (PDOException $e) {
+    redirect('contact.php');
+}$newUser = new User($pdo);
 
-if (isset($_POST)){
-$newUser->insert($_POST);
+if (!isset($_POST['firstname']) || ($_POST['lastname']) || ($_POST['email']) || ($_POST['password']))
+{
+    $requiredError = new RequiredFields();
+    $_SESSION['error_message'] = $requiredError->getErrorMessage();
+    redirect('sign-in.php');
 }
+$newUser->insert($_POST);
+
 
 if (!$userStmt) {
     header('Location: sign-up.php');

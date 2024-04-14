@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../layout/side-bar.php';
-require_once '../data/query_material.php';
+// require_once '../data/query_material.php';
 
 
 ?>

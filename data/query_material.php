@@ -1,14 +1,8 @@
 <?php
 
-$dbservername = 'localhost';
-$dbusername = 'root';
-$dbpassword = '';
-$dbname = 'galerie-website';
+require_once __DIR__ . '/../functions/db.php';
 
-$db = new PDO("mysql:host=$dbservername;port=3307;dbname=$dbname;charset=utf8", $dbusername, $dbpassword,[PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
-
-
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$db = getConnection();
 
 $sqlQuery = "SELECT material_name, material.id
 FROM material

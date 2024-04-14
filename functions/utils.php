@@ -6,10 +6,7 @@ function redirect(string $location): void
     exit;
 }
 
-function moveUploadFile($tmtName, $direction)
-{
 
-}
 
 function randomStr(int $lenght)
 {
