@@ -4,8 +4,11 @@ require_once __DIR__ . '/../functions/db.php';
 
 
 
-$pdo = getConnection();
-$newMaterial = new Material($pdo);
+try {
+    $pdo = getConnection();
+} catch (PDOException $e) {
+    redirect('contact.php');
+}$newMaterial = new Material($pdo);
 
 
 $newMaterial->insert($_POST);

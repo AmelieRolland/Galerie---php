@@ -5,8 +5,11 @@ require_once __DIR__ . '/../functions/db.php';
 
 $id=$_GET['id'];
 
-$pdo = getConnection();
-
+try {
+    $pdo = getConnection();
+} catch (PDOException $e) {
+    redirect('delete.php');
+}
 $deleteArtwork= new Artwork($pdo, 'artwork');
 $deleteArtwork->delete($id);
 

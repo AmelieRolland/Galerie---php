@@ -5,8 +5,6 @@ require_once __DIR__ . '/../functions/utils.php';
 class Artwork 
 {
     const UPLOAD_DIR = "__DIR__ . '/../assets/img/galerie/'";
-    private const REQUIRED_FIELDS = ['name', 'year', 'height_cm', 'width_cm', 'description', 'img_url'];
-    private array $artworkFields;
 
 
         public function __construct(
@@ -17,18 +15,6 @@ class Artwork
         }
     
 
-
-    private function hasRequiredFields()
-    {
-        foreach (self::REQUIRED_FIELDS as $field) {
-            if (!isset($this->artworkFields[$field]) || empty($this->artworkFields[$field])) {
-                return false;
-            }
-        }
-
-        redirect('new-artwork.php');
-        
-    }
 
     private function findFile()
     {
