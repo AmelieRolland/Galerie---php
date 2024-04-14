@@ -32,12 +32,13 @@ Contient 5 tables :
 ##### Sécurité
 
 * Hashage de mot de passe en BCRYPT à la création de compte
-* Filtrage de caractères spéciaux dans la messagerie contact :
+* Filtrage de caractères spéciaux dans la messagerie contact (dans cet exemple, du texte entouré de balises script) :
 
 ```php
 $_POST['message'] = htmlspecialchars(strip_tags($_POST['message']));
 ```
 ![alt text](<Capture d’écran 2024-04-14 184620.jpg>)
+
 
 ## FUNCTIONS
 
@@ -68,7 +69,9 @@ if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 
 1. Organisation
 
-C'est la première fois que je créé un projet de  cette ampleur (je ne m'en serai pas **du tout** sentie capable il y a encore trois semaine!). Je l'ai réalisé sur mon temps libre, pendant que nous continuions d'apprendres de nouveaux chapitres toujours plus interessants.
+Je ne suis pas très fière ce l'état de de dossier; je me suis pas mal éparpillée, et même si j'apprend en pratiquant que ok, la prochaine fois je créérai un dossier à part pour ça, et un dossier à part pour ça, eh bien pour ce projet précisémment malheureusement le mal est fait. Je n'ai plus de temps, et j'aurai bien trop peur de casser mon code au dernier moment.
+
+C'est la première fois que je créé un projet de  cette ampleur (je ne m'en serai pas **du tout** sentie capable il y a encore trois semaine!). Je l'ai réalisé sur mon temps libre, pendant que nous continuions d'apprendre de nouveaux chapitres toujours plus interessants.
 
 De mon côté, j'étais tellement excitée à l'idée de mettre en pratiques des choses que j'imaginais, de me 'buter' dessus jusqu'à ce que ça fonctionne, que je n'ai fait qu'empiler de nouveaux fichiers sans mieux les organiser. A cause de ça, il est fort problable de rencontrer quelques doublons de code, un nettoyage est prévu.
 
@@ -79,7 +82,9 @@ Pour cette même raison évoquée juste au dessus, j'ai manqué des choses essen
 3. Accès et utilisation de la table de jointure dans la bdd
 
 C'était un peu prise de tête au début, jusqu'à ce que j'arrête de paniquer et que je mette à plat mes besoins, et que je réalise qu'il me fallait juste des étapes supplémentaires, mais rien de si compliqué finalement.
-J'ai détaillé ces besoins et j'en ai fait des fonctions pour pouvoir les réutiliser dans des cas similaires.
+J'ai détaillé ces besoins et j'en ai fait des fonctions pour pouvoir les réutiliser dans des cas similaires. Et puis, ça me tenait très à coeur car je ne voulais pas y renoncer par facilité.
 
+## CONCLUSION
 
+J'ai adoré travailler sur ce projet, j'ai très envie de le continuer et corriger les erreurs mentionnées plus haut. J'ai une petite frustration de ne pas rendre un projet fini, mais je suis quand même contente d'avoir pu réaliser tout ça en autonomie, quitte à m'acharner sur des erreurs (plusieurs jours parfois). Mais, ça me permet de garder en mémoire ces cas d'erreur justement (enfin, j'espère vraiment!) et de pouvoir les amorçer plus rapidement si ça devait se reproduire.
 
