@@ -59,7 +59,10 @@ J'ai dû retirer Artwork au dernier moment et l'isoler, car je rencontrai des di
 Je crois que ça me sera très utile aussi si je décide de créer une page e-commerce.
 
 
-J'ai utilisé une abstract class également pour les erreurs. Je n'ai pas eu le temps de traiter tous les messages d'erreur, car j'ai mis un peu de temps à comprendre et prendre en main cette méthode qui me semblait très interessante. Il a quand même fallu que je la teste, alors j'ai créé [ErrorResponse](classes/ErrorResponses/ErrorResponse.php) qui est la classe parente, et [InvalidEmail](classes/ErrorResponses/InvalidEmail.php) et [RequiredFields](classes/ErrorResponses/RequiredFields.php) qui sont des classes enfants. L'idée est ensuite de gérer mes message d'erreur avec de nouvelles classes enfant. J'ai utilisé la $_SESSION pour enregistrer et détecter un message d'erreur -- [dans le sign-in_process, ici](admin/sign-in_process.php) :
+J'ai voulu utiliser une abstract class également pour les erreurs. Je n'ai pas eu le temps de traiter tous les messages d'erreur, car j'ai mis un peu de temps à comprendre et prendre en main cette méthode qui me semblait très interessante. Il a quand même fallu que je la teste, alors j'ai créé [ErrorResponse](classes/ErrorResponses/ErrorResponse.php) qui est la classe parente, et [InvalidEmail](classes/ErrorResponses/InvalidEmail.php) et [RequiredFields](classes/ErrorResponses/RequiredFields.php) qui sont des classes enfants.
+**MAIS, en charchant, j'ai découvert tout récemment qu'il était possible d'extend la classe Exception; je me suis dit que c'était encore mieux, car Exception a déjà un argument "message", et implemente 'throwable' : je pourrai donc plus tard throw mes messages déjà écrits. Je suis donc partie là dessus, ça fonctionne, mais je n'ai toujours pas supprimé ErrorResponse.**
+
+ L'idée est ensuite de gérer mes message d'erreur avec de nouvelles classes enfant. J'ai utilisé la $_SESSION pour enregistrer et détecter un message d'erreur -- [dans le sign-in_process, ici](admin/sign-in_process.php) :
 
 ```php
 if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
