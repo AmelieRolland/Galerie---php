@@ -1,6 +1,9 @@
-# EXAM PHP - AMELIE ROLLAND
+# GALERIE EN LIGNE
 
-## Site - galerie
+### Examen php
+
+Tech : php, sql, Tailwind
+
 
 #### BDD :
 
@@ -60,9 +63,9 @@ Je crois que ça me sera très utile aussi si je décide de créer une page e-co
 
 
 J'ai voulu utiliser une abstract class également pour les erreurs. Je n'ai pas eu le temps de traiter tous les messages d'erreur, car j'ai mis un peu de temps à comprendre et prendre en main cette méthode qui me semblait très interessante. Il a quand même fallu que je la teste, alors j'ai créé [ErrorResponse](classes/ErrorResponses/ErrorResponse.php) qui est la classe parente, et [InvalidEmail](classes/ErrorResponses/InvalidEmail.php) et [RequiredFields](classes/ErrorResponses/RequiredFields.php) qui sont des classes enfants.
-**MAIS, en charchant, j'ai redécouvert qu'il était possible d'extend la classe Exception; je me suis dit que c'était encore mieux, car Exception a déjà un argument "message", et implemente 'throwable' : je pourrai donc plus tard throw mes messages déjà écrits. Je suis donc partie là dessus, ça fonctionne, mais je n'ai toujours pas supprimé ErrorResponse.**
 
- L'idée est ensuite de gérer mes message d'erreur avec de nouvelles classes enfant. J'ai utilisé la $_SESSION pour enregistrer et détecter un message d'erreur -- [dans le sign-in_process, ici](admin/sign-in_process.php) :
+
+ L'idée est ensuite de gérer mes message d'erreur avec de nouvelles classes enfant. J'ai utilisé la $_SESSION pour enregistrer et détecter un message d'erreur :
 
 ```php
 if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
@@ -82,31 +85,9 @@ Dans ce dossier, on retrouve toutes les query simples necessaires, pour que je n
 
 J'y ai regroupé mes visuels et ma galerie d'images. 
 
-## DIFFICULTES RENCONTREES
 
-1. Organisation
 
-Je ne suis pas très fière de l'état de ce dossier; je me suis pas mal éparpillée, et même si en pratiquant j'apprend que ok, la prochaine fois je créérai un dossier à part pour ça, et un dossier à part pour ça, eh bien pour ce projet précisémment malheureusement le mal est fait. Je n'ai plus de temps, et j'aurai bien trop peur de casser mon code au dernier moment.
+## To Do:
 
-Aussi, toujours en pratiquant, je réalise que je me construis une façon de nommer mes fichiers; du coup ils n'ont pas toujours tous les même syntaxe ici, mais je l'appliquerai pour la suite.
-
-C'est la première fois que je créé un projet de  cette ampleur (je ne m'en serai pas **du tout** sentie capable il y a encore trois semaine!). Je l'ai réalisé sur mon temps libre, pendant que nous continuions d'apprendre de nouveaux chapitres toujours plus interessants.
-
-De mon côté, j'étais tellement excitée à l'idée de mettre en pratiques des choses que j'imaginais, de me 'buter' dessus jusqu'à ce que ça fonctionne, que je n'ai fait qu'empiler de nouveaux fichiers sans mieux les organiser. A cause de ça, il est fort problable de rencontrer quelques doublons de code, un nettoyage est prévu.
-
-2. Manque de traitement d'erreurs
-
-Pour cette même raison évoquée juste au dessus, j'ai manqué des choses essentielles dans la création de mon code, à savoir la gestion d'erreur. Je m'étais dit que j'ajouterai tout ça à la fin, en organisant mieux mon code, mais c'était une erreur. Je réalise l'importance de traiter ça de façon systematique dès que c'est nécessaire. Il me manque le cas d'erreur où l'utilisateur rentre ce qu'il veut dans l'url par exemple, et des mauvaises utilisations de formrulaires. Bien que j'aie pu pu illustrer la façon dont je voulais le mettre en place avec [les classes](#classes) évoquées plus haut, le manque de temps ne m'a pas permis de l'appliquer pour tout.
-
-3. Accès et utilisation de la table de jointure dans la bdd
-
-C'était un peu prise de tête au début, jusqu'à ce que j'arrête de paniquer et que je mette à plat mes besoins, et que je réalise qu'il me fallait juste des étapes supplémentaires, mais rien de si compliqué finalement.
-J'ai détaillé ces besoins et j'en ai fait des fonctions pour pouvoir les réutiliser dans des cas similaires. Et puis, ça me tenait très à coeur car je ne voulais pas y renoncer par facilité.
-
-> [!WARNING]
-> Même si j'ai commencé à toucher au css au début, pour la page accueil notamment, j'ai vite arrêté pour me consacrer à php. Justement parceque ça n'était pas le sujet, je m'étais dit que c'était l'occasion de tester Tailwind sans pression, et apprendre à le prendre en main doucement. Je compte bien le retravailler ensuite!
-
-## CONCLUSION
-
-J'ai adoré travailler sur ce projet, j'ai très envie de le continuer et corriger les erreurs mentionnées plus haut. J'ai une petite frustration de ne pas rendre un projet fini, mais je suis quand même contente d'avoir pu réaliser tout ça en autonomie, quitte à m'acharner sur des erreurs (plusieurs jours parfois). Mais, ça me permet de garder en mémoire ces cas d'erreur justement (enfin, j'espère vraiment!) et de pouvoir les désamorçer plus rapidement si ça devait se reproduire.
+Après avoir travaillé le visuel de la page d'accueil, je me suis concentrée ensuite sur php; je devrais encore travailler l'interface des autres pages.
 
